@@ -2754,7 +2754,7 @@ AC_ARG_WITH([ssl-engine],
 
 nocrypto_saved_LIBS="$LIBS"
 if test "x$openssl" = "xyes" ; then
-	LIBS="-lcrypto $LIBS"
+	LIBS="-lcrypto -lz $LIBS"
 	CHANNELLIBS="-lcrypto $CHANNELLIBS"
 	AC_TRY_LINK_FUNC([RAND_add], ,
 	    [AC_MSG_ERROR([*** working libcrypto not found, check config.log])])
