@@ -1061,6 +1061,12 @@ do_setup_env(struct ssh *ssh, Session *s, const char *shell)
 
 	if (getenv("TZ"))
 		child_set_env(&env, &envsize, "TZ", getenv("TZ"));
+#ifdef __MINT__
+	if (getenv("UNIXMODE"))
+		child_set_env(&env, &envsize, "UNIXMODE", getenv("UNIXMODE"));
+	if (getenv("PCONVERT"))
+		child_set_env(&env, &envsize, "PCONVERT", getenv("PCONVERT"));
+#endif
 	if (s->term)
 		child_set_env(&env, &envsize, "TERM", s->term);
 	if (s->display)
