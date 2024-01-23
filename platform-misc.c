@@ -25,6 +25,9 @@
 int
 platform_sys_dir_uid(uid_t uid)
 {
+#ifdef __MINT__
+	return 0;
+#endif
 	if (uid == 0)
 		return 1;
 #ifdef PLATFORM_SYS_DIR_UID
