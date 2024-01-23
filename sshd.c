@@ -1990,6 +1990,8 @@ main(int ac, char **av)
 		if (check_ntsec(_PATH_PRIVSEP_CHROOT_DIR) &&
 		    (st.st_uid != getuid () ||
 		    (st.st_mode & (S_IWGRP|S_IWOTH)) != 0))
+#elif defined(__MINT__)
+		if (0)
 #else
 		if (st.st_uid != 0 || (st.st_mode & (S_IWGRP|S_IWOTH)) != 0)
 #endif
