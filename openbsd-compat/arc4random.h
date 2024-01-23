@@ -23,7 +23,9 @@
  * Stub functions for portability.  From LibreSSL with some adaptations.
  */
 
+#ifndef __MINT__
 #include <sys/mman.h>
+#endif
 
 #include <signal.h>
 

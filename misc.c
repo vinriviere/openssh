@@ -22,7 +22,9 @@
 
 #include <sys/types.h>
 #include <sys/ioctl.h>
+#ifndef __MINT__
 #include <sys/mman.h>
+#endif
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -3019,6 +3021,8 @@ lib_contains_symbol(const char *path, const char *s)
  out:
 	free(nl[0].n_name);
 	return ret;
+#elif defined(__MINT__)
+	return -1;
 #else /* HAVE_NLIST_H */
 	int fd, ret = -1;
 	struct stat st;
