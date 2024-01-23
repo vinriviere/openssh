@@ -947,7 +947,7 @@ sglob_comp(const void *aa, const void *bb)
 	if (sort_flag & LS_NAME_SORT)
 		return (rmul * strcmp(ap, bp));
 	else if (sort_flag & LS_TIME_SORT) {
-#if defined(HAVE_STRUCT_STAT_ST_MTIM)
+#if defined(HAVE_STRUCT_STAT_ST_MTIM) && !defined(__MINT__)
 		if (timespeccmp(&as->st_mtim, &bs->st_mtim, ==))
 			return 0;
 		return timespeccmp(&as->st_mtim, &bs->st_mtim, <) ?
